@@ -33,6 +33,7 @@ def gettoken():
     headers = {
         'Ocp-Apim-Subscription-Key': subscription_key
     }
+    print(os.getenv("AZURE_SPEECH_REGION"))
     response = requests.post(fetch_token_url, headers=headers)
     access_token = response.text
 
