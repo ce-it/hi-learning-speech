@@ -14,15 +14,15 @@ from flask import Flask, jsonify, render_template, request, make_response,Bluepr
 bp = Blueprint('CHAT', __name__, url_prefix='/CHAT')
 
 client = AzureOpenAI(
-azure_endpoint="https://smartreeaitest.openai.azure.com/",
-api_key="e6e4db54697d42a197d46827e1a780d7",
-api_version="2023-05-15"
+azure_endpoint="",
+api_key="",
+api_version=""
 )
 
 # This will correspond to the custom name you chose for your deployment when you deployed a model.
-deployment_id='smartreeOpenAIChat'
-spech_key='e56045bbff4a428ea990e1cb78862599'
-spech_region='koreacentral'
+deployment_id=''
+spech_key=''
+spech_region=''
 
 # This example requires environment variables named "SPEECH_KEY" and "SPEECH_REGION"
 speech_config = speechsdk.SpeechConfig(subscription=spech_key, region=spech_region)

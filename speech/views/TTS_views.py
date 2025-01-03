@@ -6,6 +6,7 @@ import random
 import string
 import threading
 import os
+from dotenv import load_dotenv
 import azure.cognitiveservices.speech as speechsdk
 
 from flask import Flask, jsonify, render_template, request, make_response,Blueprint
@@ -13,8 +14,10 @@ from flask import Flask, jsonify, render_template, request, make_response,Bluepr
 bp = Blueprint('TTS', __name__, url_prefix='/TTS')
 
 
-subscription_key = os.environ.get("AZURE_SPEECH_SUBSCRIPTION_KEY")
-region = os.environ.get("AZURE_SPEECH_REGION")
+#subscription_key = os.environ.get("AZURE_SPEECH_SUBSCRIPTION_KEY")
+#region = os.environ.get("AZURE_SPEECH_REGION")
+subscription_key = os.getenv("AZURE_SPEECH_SUBSCRIPTION_KEY")
+region = os.getenv("AZURE_SPEECH_REGION")
 language = "en-US"
 languageNew = "en-AU"
 voice = "Microsoft Server Speech Text to Speech Voice (en-US, JennyNeural)"
