@@ -1,6 +1,7 @@
 import os
 import requests
 import base64
+from dotenv import load_dotenv
 import json
 import time
 import random
@@ -12,9 +13,12 @@ from flask import Flask, jsonify, render_template, request, make_response,Bluepr
 
 bp = Blueprint('SST', __name__, url_prefix='/SST')
 
-subscription_key = os.environ.get("AZURE_SPEECH_SUBSCRIPTION_KEY")
-region = os.environ.get("AZURE_SPEECH_REGION")
-
+#subscription_key = os.environ.get("AZURE_SPEECH_SUBSCRIPTION_KEY")
+#region = os.environ.get("AZURE_SPEECH_REGION")
+# .env 파일 로드
+load_dotenv()
+subscription_key = os.getenv("AZURE_SPEECH_SUBSCRIPTION_KEY")
+region = os.getenv("AZURE_SPEECH_REGION")
 
 #region = "koreacentral"
 language = "en-US"
@@ -31,6 +35,7 @@ def gettoken():
     }
     response = requests.post(fetch_token_url, headers=headers)
     access_token = response.text
+
     #return jsonify({"at":access_token})
     return access_token
 
